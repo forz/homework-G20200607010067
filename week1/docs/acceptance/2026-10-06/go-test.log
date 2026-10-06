@@ -1,0 +1,184 @@
+?   	github.com/homework-G20200607010067/week1/cmd/gateway	[no test files]
+=== RUN   TestIsRetryable
+=== RUN   TestIsRetryable/cancelled_request_stops_immediately
+=== RUN   TestIsRetryable/deadline_exceeded_is_a_retryable_timeout
+=== RUN   TestIsRetryable/HTTP_408_is_retryable
+=== RUN   TestIsRetryable/HTTP_409_is_retryable
+=== RUN   TestIsRetryable/HTTP_429_is_retryable
+=== RUN   TestIsRetryable/HTTP_500_is_retryable
+=== RUN   TestIsRetryable/ordinary_client_error_is_not_retryable
+--- PASS: TestIsRetryable (0.00s)
+    --- PASS: TestIsRetryable/cancelled_request_stops_immediately (0.00s)
+    --- PASS: TestIsRetryable/deadline_exceeded_is_a_retryable_timeout (0.00s)
+    --- PASS: TestIsRetryable/HTTP_408_is_retryable (0.00s)
+    --- PASS: TestIsRetryable/HTTP_409_is_retryable (0.00s)
+    --- PASS: TestIsRetryable/HTTP_429_is_retryable (0.00s)
+    --- PASS: TestIsRetryable/HTTP_500_is_retryable (0.00s)
+    --- PASS: TestIsRetryable/ordinary_client_error_is_not_retryable (0.00s)
+=== RUN   TestNormalizeUpstreamError
+=== RUN   TestNormalizeUpstreamError/rate_limit_status_is_preserved_after_retry_exhaustion
+=== RUN   TestNormalizeUpstreamError/request_timeout_becomes_gateway_timeout
+=== RUN   TestNormalizeUpstreamError/server_failure_becomes_bad_gateway
+--- PASS: TestNormalizeUpstreamError (0.00s)
+    --- PASS: TestNormalizeUpstreamError/rate_limit_status_is_preserved_after_retry_exhaustion (0.00s)
+    --- PASS: TestNormalizeUpstreamError/request_timeout_becomes_gateway_timeout (0.00s)
+    --- PASS: TestNormalizeUpstreamError/server_failure_becomes_bad_gateway (0.00s)
+=== RUN   TestStatusErrorTransport
+=== RUN   TestStatusErrorTransport/successful_response_is_preserved
+=== RUN   TestStatusErrorTransport/error_response_is_reduced_to_status_only
+--- PASS: TestStatusErrorTransport (0.00s)
+    --- PASS: TestStatusErrorTransport/successful_response_is_preserved (0.00s)
+    --- PASS: TestStatusErrorTransport/error_response_is_reduced_to_status_only (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/adapters	0.395s
+=== RUN   TestMessageParameters
+--- PASS: TestMessageParameters (0.00s)
+=== RUN   TestFromMessage
+--- PASS: TestFromMessage (0.00s)
+=== RUN   TestMessageStreamRecv
+--- PASS: TestMessageStreamRecv (0.00s)
+=== RUN   TestMessageStreamRequiresMessageStop
+--- PASS: TestMessageStreamRequiresMessageStop (0.00s)
+=== RUN   TestMergeUsagePreservesExplicitZero
+--- PASS: TestMergeUsagePreservesExplicitZero (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/adapters/anthropic	0.806s
+=== RUN   TestToAgenticMessages
+--- PASS: TestToAgenticMessages (0.00s)
+=== RUN   TestFromAgenticMessage
+--- PASS: TestFromAgenticMessage (0.00s)
+=== RUN   TestResponseStreamRecv
+--- PASS: TestResponseStreamRecv (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/adapters/openai	1.155s
+=== RUN   TestValidateChatRequest
+=== RUN   TestValidateChatRequest/valid_request
+=== RUN   TestValidateChatRequest/missing_model
+=== RUN   TestValidateChatRequest/empty_messages
+=== RUN   TestValidateChatRequest/unsupported_role
+=== RUN   TestValidateChatRequest/oversized_content
+=== RUN   TestValidateChatRequest/invalid_prompt_version
+=== RUN   TestValidateChatRequest/nested_prompt_variable
+--- PASS: TestValidateChatRequest (0.00s)
+    --- PASS: TestValidateChatRequest/valid_request (0.00s)
+    --- PASS: TestValidateChatRequest/missing_model (0.00s)
+    --- PASS: TestValidateChatRequest/empty_messages (0.00s)
+    --- PASS: TestValidateChatRequest/unsupported_role (0.00s)
+    --- PASS: TestValidateChatRequest/oversized_content (0.00s)
+    --- PASS: TestValidateChatRequest/invalid_prompt_version (0.00s)
+    --- PASS: TestValidateChatRequest/nested_prompt_variable (0.00s)
+=== RUN   TestValidateResponseFormat
+--- PASS: TestValidateResponseFormat (0.00s)
+=== RUN   TestDecodeStrictJSON
+--- PASS: TestDecodeStrictJSON (0.00s)
+=== RUN   TestEncodeStreamEvent
+=== RUN   TestEncodeStreamEvent/delta
+=== RUN   TestEncodeStreamEvent/usage
+=== RUN   TestEncodeStreamEvent/done
+--- PASS: TestEncodeStreamEvent (0.00s)
+    --- PASS: TestEncodeStreamEvent/delta (0.00s)
+    --- PASS: TestEncodeStreamEvent/usage (0.00s)
+    --- PASS: TestEncodeStreamEvent/done (0.00s)
+=== RUN   TestHandlerStream
+=== RUN   TestHandlerStream/flushes_each_event_before_receiving_the_next
+2026/10/06 17:54:04.569882 engine.go:702: [Debug] HERTZ: Method=POST   absolutePath=/v1/chat/completions      --> handlerName=github.com/homework-G20200607010067/week1/internal/api.(*Handler).ChatCompletions-fm (num=3 handlers)
+2026/10/06 17:54:04.570409 engine.go:416: [Info] HERTZ: Using network library=netpoll
+2026/10/06 17:54:04.570434 transport.go:152: [Info] HERTZ: HTTP server listening on address=127.0.0.1:51784
+=== RUN   TestHandlerStream/HTTP_error_when_opening_upstream
+2026/10/06 17:54:04.572005 engine.go:702: [Debug] HERTZ: Method=POST   absolutePath=/v1/chat/completions      --> handlerName=github.com/homework-G20200607010067/week1/internal/api.(*Handler).ChatCompletions-fm (num=3 handlers)
+2026/10/06 17:54:04.572054 engine.go:416: [Info] HERTZ: Using network library=netpoll
+2026/10/06 17:54:04.572063 transport.go:152: [Info] HERTZ: HTTP server listening on address=127.0.0.1:51786
+=== RUN   TestHandlerStream/HTTP_error_when_receiving_first_event
+2026/10/06 17:54:04.572774 engine.go:702: [Debug] HERTZ: Method=POST   absolutePath=/v1/chat/completions      --> handlerName=github.com/homework-G20200607010067/week1/internal/api.(*Handler).ChatCompletions-fm (num=3 handlers)
+2026/10/06 17:54:04.572802 engine.go:416: [Info] HERTZ: Using network library=netpoll
+2026/10/06 17:54:04.572808 transport.go:152: [Info] HERTZ: HTTP server listening on address=127.0.0.1:51789
+=== RUN   TestHandlerStream/SSE_error_after_first_event_for_receive_error
+2026/10/06 17:54:04.573300 engine.go:702: [Debug] HERTZ: Method=POST   absolutePath=/v1/chat/completions      --> handlerName=github.com/homework-G20200607010067/week1/internal/api.(*Handler).ChatCompletions-fm (num=3 handlers)
+2026/10/06 17:54:04.573331 engine.go:416: [Info] HERTZ: Using network library=netpoll
+2026/10/06 17:54:04.573339 transport.go:152: [Info] HERTZ: HTTP server listening on address=127.0.0.1:51791
+=== RUN   TestHandlerStream/SSE_error_after_first_event_for_unsupported_event
+2026/10/06 17:54:04.573768 engine.go:702: [Debug] HERTZ: Method=POST   absolutePath=/v1/chat/completions      --> handlerName=github.com/homework-G20200607010067/week1/internal/api.(*Handler).ChatCompletions-fm (num=3 handlers)
+2026/10/06 17:54:04.573801 engine.go:416: [Info] HERTZ: Using network library=netpoll
+2026/10/06 17:54:04.573806 transport.go:152: [Info] HERTZ: HTTP server listening on address=127.0.0.1:51793
+=== RUN   TestHandlerStream/client_disconnect_cancels_and_closes_upstream
+2026/10/06 17:54:04.574248 engine.go:702: [Debug] HERTZ: Method=POST   absolutePath=/v1/chat/completions      --> handlerName=github.com/homework-G20200607010067/week1/internal/api.(*Handler).ChatCompletions-fm (num=3 handlers)
+2026/10/06 17:54:04.574276 engine.go:416: [Info] HERTZ: Using network library=netpoll
+2026/10/06 17:54:04.574282 transport.go:152: [Info] HERTZ: HTTP server listening on address=127.0.0.1:51795
+2026/10/06 17:54:04.574614 connection.go:100: [Debug] HERTZ: Netpoll error=connection has been closed when malloc, remoteAddr=127.0.0.1:51796
+--- PASS: TestHandlerStream (0.00s)
+    --- PASS: TestHandlerStream/flushes_each_event_before_receiving_the_next (0.00s)
+    --- PASS: TestHandlerStream/HTTP_error_when_opening_upstream (0.00s)
+    --- PASS: TestHandlerStream/HTTP_error_when_receiving_first_event (0.00s)
+    --- PASS: TestHandlerStream/SSE_error_after_first_event_for_receive_error (0.00s)
+    --- PASS: TestHandlerStream/SSE_error_after_first_event_for_unsupported_event (0.00s)
+    --- PASS: TestHandlerStream/client_disconnect_cancels_and_closes_upstream (0.00s)
+=== RUN   TestNewServer
+2026/10/06 17:54:04.574651 engine.go:702: [Debug] HERTZ: Method=GET    absolutePath=/healthz                  --> handlerName=github.com/homework-G20200607010067/week1/internal/api.NewServer.func1 (num=4 handlers)
+2026/10/06 17:54:04.574656 engine.go:702: [Debug] HERTZ: Method=GET    absolutePath=/readyz                   --> handlerName=github.com/homework-G20200607010067/week1/internal/api.NewServer.func2 (num=4 handlers)
+--- PASS: TestNewServer (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/api	1.610s
+=== RUN   TestValidateRejectsNonFiniteRates
+--- PASS: TestValidateRejectsNonFiniteRates (0.00s)
+=== RUN   TestValidateRequiresFixedAliasProtocolBindings_BitsSpecUT
+--- PASS: TestValidateRequiresFixedAliasProtocolBindings_BitsSpecUT (0.00s)
+=== RUN   TestValidateRejectsRetryBudgetAboveThree_BitsSpecUT
+--- PASS: TestValidateRejectsRetryBudgetAboveThree_BitsSpecUT (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/config	1.595s
+=== RUN   TestNormalizeError
+=== RUN   TestNormalizeError/preserves_gateway_errors
+=== RUN   TestNormalizeError/maps_cancellation_and_timeout
+=== RUN   TestNormalizeError/hides_arbitrary_internal_errors
+--- PASS: TestNormalizeError (0.00s)
+    --- PASS: TestNormalizeError/preserves_gateway_errors (0.00s)
+    --- PASS: TestNormalizeError/maps_cancellation_and_timeout (0.00s)
+    --- PASS: TestNormalizeError/hides_arbitrary_internal_errors (0.00s)
+=== RUN   TestModelLimiter
+--- PASS: TestModelLimiter (0.00s)
+=== RUN   TestRetryPolicyRunsInitialAttemptPlusAtMostThreeRetries_BitsSpecUT
+--- PASS: TestRetryPolicyRunsInitialAttemptPlusAtMostThreeRetries_BitsSpecUT (0.00s)
+=== RUN   TestRetryPolicyBackoffIsCancellable_BitsSpecUT
+--- PASS: TestRetryPolicyBackoffIsCancellable_BitsSpecUT (0.00s)
+=== RUN   TestRetryPolicyExponentialCaps
+    retry_spec_test.go:64: exponential backoff caps with 150ms ceiling: [50ms 100ms 150ms]
+--- PASS: TestRetryPolicyExponentialCaps (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/core	1.859s
+?   	github.com/homework-G20200607010067/week1/internal/domain	[no test files]
+=== RUN   TestOpenCreatesAndMigratesAnEmptyDatabase_BitsSpecUT
+--- PASS: TestOpenCreatesAndMigratesAnEmptyDatabase_BitsSpecUT (0.01s)
+=== RUN   TestPromptRepositoryCreate
+--- PASS: TestPromptRepositoryCreate (0.01s)
+=== RUN   TestUsageRepository
+--- PASS: TestUsageRepository (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/persistence/sqlite	2.059s
+=== RUN   TestGatewayServiceGenerate
+=== RUN   TestGatewayServiceGenerate/retries_transport_errors_and_records_terminal_usage_once
+=== RUN   TestGatewayServiceGenerate/performs_exactly_one_structured_correction_and_sums_usage
+--- PASS: TestGatewayServiceGenerate (0.00s)
+    --- PASS: TestGatewayServiceGenerate/retries_transport_errors_and_records_terminal_usage_once (0.00s)
+    --- PASS: TestGatewayServiceGenerate/performs_exactly_one_structured_correction_and_sums_usage (0.00s)
+=== RUN   TestGatewayServiceStream
+=== RUN   TestGatewayServiceStream/retries_before_first_text_and_records_TTFT
+=== RUN   TestGatewayServiceStream/does_not_retry_after_text_was_emitted
+--- PASS: TestGatewayServiceStream (0.00s)
+    --- PASS: TestGatewayServiceStream/retries_before_first_text_and_records_TTFT (0.00s)
+    --- PASS: TestGatewayServiceStream/does_not_retry_after_text_was_emitted (0.00s)
+=== RUN   TestCompileStructured
+--- PASS: TestCompileStructured (0.00s)
+=== RUN   TestPromptService
+=== RUN   TestPromptService/create_defaults_the_role_to_system
+=== RUN   TestPromptService/render_preflights_variables_and_preserves_version
+=== RUN   TestPromptService/maps_missing_versions_and_enforces_bounds
+--- PASS: TestPromptService (0.00s)
+    --- PASS: TestPromptService/create_defaults_the_role_to_system (0.00s)
+    --- PASS: TestPromptService/render_preflights_variables_and_preserves_version (0.00s)
+    --- PASS: TestPromptService/maps_missing_versions_and_enforces_bounds (0.00s)
+=== RUN   TestManagedStreamRecordsStructuredOverflow
+--- PASS: TestManagedStreamRecordsStructuredOverflow (0.00s)
+=== RUN   TestModelRouterResolvesOnlyConfiguredAliasesAndListsStably_BitsSpecUT
+--- PASS: TestModelRouterResolvesOnlyConfiguredAliasesAndListsStably_BitsSpecUT (0.00s)
+PASS
+ok  	github.com/homework-G20200607010067/week1/internal/services	2.539s

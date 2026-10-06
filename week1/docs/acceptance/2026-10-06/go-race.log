@@ -1,0 +1,10 @@
+?   	github.com/homework-G20200607010067/week1/cmd/gateway	[no test files]
+ok  	github.com/homework-G20200607010067/week1/internal/adapters	1.445s
+ok  	github.com/homework-G20200607010067/week1/internal/adapters/anthropic	1.689s
+ok  	github.com/homework-G20200607010067/week1/internal/adapters/openai	2.474s
+ok  	github.com/homework-G20200607010067/week1/internal/api	2.039s
+ok  	github.com/homework-G20200607010067/week1/internal/config	3.330s
+ok  	github.com/homework-G20200607010067/week1/internal/core	2.745s
+?   	github.com/homework-G20200607010067/week1/internal/domain	[no test files]
+ok  	github.com/homework-G20200607010067/week1/internal/persistence/sqlite	2.695s
+ok  	github.com/homework-G20200607010067/week1/internal/services	3.334s

@@ -1,5 +1,2 @@
-ex_ctx/*
-.DS_Store
-/docs/
-node_modules/
-dist/
+.codex/
+AGENTS.md
