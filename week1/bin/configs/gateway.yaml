@@ -1,0 +1,42 @@
+server:
+  address: "127.0.0.1:8080"
+  read_timeout: 10s
+  idle_timeout: 60s
+
+database:
+  path: "data/gateway.db"
+  busy_timeout: 5s
+
+retry:
+  max_retries: 3
+  base_delay: 50ms
+  max_delay: 500ms
+
+limits:
+  max_body_bytes: 1048576
+  max_messages: 64
+  max_message_bytes: 65536
+  max_template_bytes: 65536
+  max_rendered_prompt_bytes: 131072
+  max_schema_bytes: 65536
+  max_schema_depth: 32
+  max_stream_buffer_bytes: 1048576
+  max_query_limit: 1000
+
+models:
+  deepseek-v4-pro:
+    protocol: openai_responses
+    upstream_model: deepseek-v4-pro
+    base_url: "https://api.deepseek.com"
+    timeout: 30s
+    max_tokens: 2048
+    rate_per_second: 100
+    burst: 100
+  deepseek-v4-flash:
+    protocol: anthropic_messages
+    upstream_model: deepseek-v4-flash
+    base_url: "https://api.deepseek.com/anthropic"
+    timeout: 30s
+    max_tokens: 2048
+    rate_per_second: 100
+    burst: 100

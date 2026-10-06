@@ -1,6 +1,0 @@
-/bin/*
-!/bin/gateway
-/data/
-/artifacts/
-__pycache__/
-.env
