@@ -18,11 +18,11 @@ func (a *Adapter) Stream(ctx context.Context, request *domain.ModelRequest) (dom
 	if err != nil {
 		return nil, err
 	}
-	selected, err := a.modelFor(ctx, request)
+	options, err := modelOptions(request)
 	if err != nil {
 		return nil, err
 	}
-	reader, err := selected.Stream(ctx, messages, modelOptions(request)...)
+	reader, err := a.model.Stream(ctx, messages, options...)
 	if err != nil {
 		return nil, err
 	}

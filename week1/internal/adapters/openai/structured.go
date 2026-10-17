@@ -1,26 +1,22 @@
 package openai
 
 import (
-	"context"
 	"encoding/json"
 
-	"github.com/cloudwego/eino-ext/components/model/agenticopenai"
 	"github.com/homework-G20200607010067/week1/internal/domain"
 	"github.com/openai/openai-go/v3/packages/param"
 	"github.com/openai/openai-go/v3/responses"
 )
 
-func (a *Adapter) modelFor(ctx context.Context, request *domain.ModelRequest) (*agenticopenai.ResponsesModel, error) {
-	if request.ResponseFormat == nil {
-		return a.model, nil
+func responseTextConfig(responseFormat *domain.JSONSchemaFormat) (*responses.ResponseTextConfigParam, error) {
+	if responseFormat == nil {
+		return nil, nil
 	}
 	var schemaMap map[string]any
-	if err := json.Unmarshal(request.ResponseFormat.Schema, &schemaMap); err != nil {
+	if err := json.Unmarshal(responseFormat.Schema, &schemaMap); err != nil {
 		return nil, err
 	}
-	format := responses.ResponseFormatTextConfigParamOfJSONSchema(request.ResponseFormat.Name, schemaMap)
-	format.OfJSONSchema.Strict = param.NewOpt(request.ResponseFormat.Strict)
-	requestConfig := a.baseConfig
-	requestConfig.Text = &responses.ResponseTextConfigParam{Format: format}
-	return agenticopenai.NewResponsesModel(ctx, &requestConfig)
+	format := responses.ResponseFormatTextConfigParamOfJSONSchema(responseFormat.Name, schemaMap)
+	format.OfJSONSchema.Strict = param.NewOpt(responseFormat.Strict)
+	return &responses.ResponseTextConfigParam{Format: format}, nil
 }

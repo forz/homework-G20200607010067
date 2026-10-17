@@ -17,8 +17,7 @@ import (
 // Adapter wraps Eino Ext's OpenAI Responses component behind the gateway's
 // provider-neutral model boundary.
 type Adapter struct {
-	model      *agenticopenai.ResponsesModel
-	baseConfig agenticopenai.ResponsesConfig
+	model *agenticopenai.ResponsesModel
 }
 
 // New creates a Responses adapter that shares the process HTTP client and
@@ -35,7 +34,7 @@ func New(ctx context.Context, cfg config.ModelConfig, client *http.Client) (*Ada
 	if err != nil {
 		return nil, err
 	}
-	return &Adapter{model: responsesModel, baseConfig: modelConfig}, nil
+	return &Adapter{model: responsesModel}, nil
 }
 
 // Protocol identifies the upstream wire contract implemented by this adapter.
@@ -47,19 +46,27 @@ func (a *Adapter) Generate(ctx context.Context, request *domain.ModelRequest) (*
 	if err != nil {
 		return nil, err
 	}
-	selected, err := a.modelFor(ctx, request)
+	options, err := modelOptions(request)
 	if err != nil {
 		return nil, err
 	}
-	result, err := selected.Generate(ctx, messages, modelOptions(request)...)
+	result, err := a.model.Generate(ctx, messages, options...)
 	if err != nil {
 		return nil, err
 	}
 	return fromAgenticMessage(result)
 }
 
-func modelOptions(request *domain.ModelRequest) []einomodel.Option {
-	options := make([]einomodel.Option, 0, 4)
+func modelOptions(request *domain.ModelRequest) ([]einomodel.Option, error) {
+	textConfig, err := responseTextConfig(request.ResponseFormat)
+	if err != nil {
+		return nil, err
+	}
+	options := make([]einomodel.Option, 0, 5)
+	if textConfig != nil {
+		// A per-call option keeps schemas isolated while reusing the model/client.
+		options = append(options, agenticopenai.WithResponsesText(textConfig))
+	}
 	if request.UpstreamModel != "" {
 		options = append(options, einomodel.WithModel(request.UpstreamModel))
 	}
@@ -72,7 +79,7 @@ func modelOptions(request *domain.ModelRequest) []einomodel.Option {
 	if request.MaxTokens != nil {
 		options = append(options, einomodel.WithMaxTokens(*request.MaxTokens))
 	}
-	return options
+	return options, nil
 }
 
 func toAgenticMessages(messages []domain.Message) ([]*schema.AgenticMessage, error) {

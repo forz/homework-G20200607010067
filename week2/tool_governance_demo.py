@@ -31,6 +31,12 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 
+# 作业专用区间与超时演示参数，不代表真实业务的单笔限额。
+TEACHING_LIMIT_LOW = 50_000
+TEACHING_LIMIT_HIGH = 80_000
+TIMEOUT_DEMO_SLEEP = 3.0
+
+
 class PermissionMode(StrEnum):
     DEFAULT = "default"
     PLAN = "plan"
@@ -662,8 +668,11 @@ async def transfer_precheck(raw_arguments: ArgsModel, context: ExecutionContext)
 
     arguments = raw_arguments
     assert isinstance(arguments, TransferArgs)
-    if 50_000 < arguments.amount <= 80_000:
-        raise PolicyDenied("EXCEED_LIMIT", "金额命中教学拦截区间 (50000, 80000]")
+    if TEACHING_LIMIT_LOW < arguments.amount <= TEACHING_LIMIT_HIGH:
+        raise PolicyDenied(
+            "EXCEED_LIMIT",
+            f"金额命中教学拦截区间 ({TEACHING_LIMIT_LOW}, {TEACHING_LIMIT_HIGH}]",
+        )
     balance = ACCOUNTS.get((context.tenant_id, arguments.from_account), 0.0)
     if balance < arguments.amount:
         raise PolicyDenied("INSUFFICIENT_BALANCE", "转出账户余额不足")
@@ -694,8 +703,8 @@ async def transfer_handler(
 ) -> Mapping[str, Any]:
     arguments = raw_arguments
     assert isinstance(arguments, TransferArgs)
-    if arguments.amount > 80_000:
-        await asyncio.sleep(3.0)
+    if arguments.amount > TEACHING_LIMIT_HIGH:
+        await asyncio.sleep(TIMEOUT_DEMO_SLEEP)
 
     from_key = (context.tenant_id, arguments.from_account)
     to_key = (context.tenant_id, arguments.to_account)

@@ -9,7 +9,7 @@ PYTHON ?= python3
 ACCEPTANCE_OUTPUT ?=
 ACCEPTANCE_OUTPUT_ARG = $(if $(ACCEPTANCE_OUTPUT),--output "$(ACCEPTANCE_OUTPUT)",)
 
-.PHONY: help deps run build health test verify acceptance
+.PHONY: help deps run build health test verify acceptance acceptance-live
 
 help:
 	@printf '%s\n' \
@@ -19,7 +19,8 @@ help:
 	  'make health    检查 Gateway 的 healthz 和 readyz' \
 	  'make test      执行全部 Go 单元测试和缺陷回归测试' \
 	  'make verify    执行本地 HTTP 验收与故障注入，无需真实密钥' \
-	  'make acceptance 执行完整验收，含真实双模型调用，需 DEEPSEEK_API_KEY' \
+	  'make acceptance 执行本地 HTTP 验收与故障注入，无需真实密钥' \
+	  'make acceptance-live 追加真实双模型调用，需 DEEPSEEK_API_KEY' \
 	  '' \
 	  '程序不会自动加载 .env；请先 export 所需环境变量。' \
 	  '可覆盖 GATEWAY_URL 指定健康检查地址。'
@@ -31,6 +32,9 @@ verify:
 	$(PYTHON) scripts/acceptance.py --mode local $(ACCEPTANCE_OUTPUT_ARG)
 
 acceptance:
+	$(PYTHON) scripts/acceptance.py --mode local $(ACCEPTANCE_OUTPUT_ARG)
+
+acceptance-live:
 	$(PYTHON) scripts/acceptance.py --mode all $(ACCEPTANCE_OUTPUT_ARG)
 
 deps:

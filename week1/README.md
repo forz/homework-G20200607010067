@@ -60,13 +60,17 @@ CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o bin/gateway ./cmd/gateway
 GOTOOLCHAIN=go1.24.13 python3 scripts/acceptance.py --mode local
 ```
 
+`make verify` 和 `make acceptance` 等价于上述命令，均只连接脚本启动的本地协议桩，不需要真实 Key。脚本覆盖双模型的非流式、流式、结构化输出和 Prompt 引用，并校验 HTTP 429、重试次数与 Usage 记录。
+
 已导出真实 `DEEPSEEK_API_KEY` 时，可执行包含真实双模型调用的完整验收：
 
 ```bash
 GOTOOLCHAIN=go1.24.13 python3 scripts/acceptance.py --mode all
 ```
 
-脚本自动启动并清理临时服务，不需要预先启动 Gateway。每次运行的 `report.md`、`report.json` 和构建/测试日志默认保存在 `artifacts/acceptance/<时间戳>/`，任一检查失败时返回非零退出码。可用 `--output <新目录>` 指定报告路径。历史验收证据见 [`docs/acceptance/2026-10-06/report.md`](docs/acceptance/2026-10-06/report.md)。
+该命令也可通过 `make acceptance-live` 执行，会调用真实上游并可能产生费用。
+
+脚本自动启动并清理临时服务，不需要预先启动 Gateway。每次运行的 `report.md`、`report.json` 和构建/测试日志默认保存在 `artifacts/acceptance/<时间戳>/`，任一检查失败时返回非零退出码。可用 `--output <新目录>` 指定报告路径（Make 命令使用 `ACCEPTANCE_OUTPUT=<新目录>`）。本次本地验收证据见 [`docs/acceptance/2026-10-17/report.md`](docs/acceptance/2026-10-17/report.md)，不代表真实模型服务已通过验收。
 
 ## 两模型基础调用
 

@@ -2,7 +2,7 @@
 
 在附件的 Python 治理框架上实现 `transfer` 工具，贯通参数校验、业务预检、权限判断、人工审批、超时处理、结果脱敏与审计追踪。
 
-本项目默认离线运行，账户和资金均为内存模拟数据，无需模型服务、API Key 或外部数据库。原始附件保留在作业目录中。
+本项目默认离线运行，账户和资金均为内存模拟数据，无需模型服务、API Key 或外部数据库。约束核验脚本内置从原始附件计算的校验值，无需另外下载附件。
 
 ## 环境准备
 
@@ -32,7 +32,7 @@ python -m pip check
 | 5. 工具注册 | `WRITE / HIGH / transfer:execute`，必须审批，超时 2 秒，非幂等，自动重试次数 0 |
 | 6. 账号脱敏 | `ACC-A-123456` → `ACC-A-****3456`，保留现有邮箱和敏感字段脱敏 |
 
-金额区间为作业的教学规则：`50000` 可通过区间检查，`80000` 被拒绝；超过 `80000` 仍须经过余额和审批检查，然后用于超时演示。
+金额区间为作业的教学规则：`50000` 可通过区间检查，`80000` 被拒绝；超过 `80000` 仍须经过余额和审批检查，然后用于超时演示。模块级常量 `TEACHING_LIMIT_LOW`、`TEACHING_LIMIT_HIGH` 和 `TIMEOUT_DEMO_SLEEP` 集中定义这两个金额边界和 3 秒演示等待时长。
 
 固定权限方法 `PermissionEngine.decide` 与原附件逐字一致。`TransferArgs` 保留继承的 [`extra="forbid"` 和严格模式](https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.extra)，额外注入 `approved`、`user_id` 等字段会被拒绝。所有业务调用均走 `ToolRuntime.invoke()`。
 
@@ -60,6 +60,8 @@ python scripts/verify_constraints.py
 ```
 
 标准：全部 `42 passed`；约束核验输出四条 `PASS`。补充用例验证缺失目标、跨租户访问、金额边界、资金守恒、同账户转账、审批过期与身份绑定、并发审批消费、权限优先级、审计脱敏，并回归订单查询、退款及模拟 Shell。
+
+[`scripts/verify_constraints.py`](scripts/verify_constraints.py) 核对权限方法源码和原始测试文件的 SHA-256、实际参数模型的严格配置及额外参数拒绝行为，并静态检查测试没有直接引用 handler/precheck 或调用权限方法。文件缺失、依赖缺失或任一约束失败时输出 `FAIL` 并返回非零退出码；源码基线保留空白和注释，调整受保护方法也会使核验失败。
 
 ### 3. 运行离线演示并检查审计
 
