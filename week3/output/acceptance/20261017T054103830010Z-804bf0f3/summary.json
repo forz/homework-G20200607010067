@@ -1,0 +1,254 @@
+{
+  "passed": true,
+  "mode": "offline_fake_model",
+  "output": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3",
+  "approval_scope": "Only exact predefined writes in fixtures created by this run",
+  "fixture_reviewer": "fixture-reviewer:offline-acceptance",
+  "pytest": {
+    "status": "passed",
+    "returncode": 0
+  },
+  "cases": {
+    "code_understanding": {
+      "passed": true,
+      "workspace": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/code_understanding/workspace",
+      "run_dir": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/code_understanding/run",
+      "run_id": "c71e5088e6894853b20eb2ce62ed6b6e",
+      "checks": {
+        "completed": true,
+        "audit_valid": true,
+        "exactly_once_writes": true,
+        "scoped_fixture_approvals": true,
+        "test_oracle_unchanged": true,
+        "expected_source_diff": true,
+        "current_tests_pass": true,
+        "exact_fixture_contents": true
+      },
+      "state": {
+        "status": "COMPLETED",
+        "step": 6,
+        "calls": 6,
+        "completed_call_ids": [
+          "understand-final",
+          "understand-plan",
+          "understand-read-source",
+          "understand-read-tests",
+          "understand-test-final",
+          "understand-write-report"
+        ],
+        "completed_write_ids": [
+          "understand-write-report"
+        ],
+        "completed_write_count": 1,
+        "workspace_hash": "3f9ecb2138e44178e22946bb338b3ada1a4d43a5a4ad30e4ce2812d9631e5952"
+      },
+      "diff": {
+        "before": {
+          "calculator.py": "369b7af4a0b0be1f02346aac4574ec970edc8c82d3197c8d9e20d2979e44429c",
+          "test_calculator.py": "5ea65df14bccd29b2d89bf46350a564e4ebf218f9898508b6fa365309ae6341e"
+        },
+        "after": {
+          "calculator.py": "369b7af4a0b0be1f02346aac4574ec970edc8c82d3197c8d9e20d2979e44429c",
+          "test_calculator.py": "5ea65df14bccd29b2d89bf46350a564e4ebf218f9898508b6fa365309ae6341e"
+        },
+        "changed_files": []
+      },
+      "evidence": [
+        {
+          "tool": "plan_task",
+          "tool_call_id": "understand-plan",
+          "workspace_hash": "8b6e7ac8686b499a26da36c5e6ef02e300e6e3a0b9dfdee9ef074a81cdca8295"
+        },
+        {
+          "path": "calculator.py",
+          "tool": "read_file",
+          "tool_call_id": "understand-read-source",
+          "workspace_hash": "8b6e7ac8686b499a26da36c5e6ef02e300e6e3a0b9dfdee9ef074a81cdca8295"
+        },
+        {
+          "path": "test_calculator.py",
+          "tool": "read_file",
+          "tool_call_id": "understand-read-tests",
+          "workspace_hash": "8b6e7ac8686b499a26da36c5e6ef02e300e6e3a0b9dfdee9ef074a81cdca8295"
+        },
+        {
+          "path": "artifacts/analysis.md",
+          "sha256": "8e3935c266b63577dab4b96ef907d93963575ba0eaf4f50eb8af8db5155c658f",
+          "tool": "write_file",
+          "tool_call_id": "understand-write-report",
+          "workspace_hash": "3f9ecb2138e44178e22946bb338b3ada1a4d43a5a4ad30e4ce2812d9631e5952"
+        },
+        {
+          "argv": [
+            "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/.venv/bin/python",
+            "-I",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "-c",
+            "/dev/null",
+            "--rootdir",
+            ".",
+            "-o",
+            "pythonpath=."
+          ],
+          "cancelled": false,
+          "command": "unit",
+          "exit_code": 0,
+          "output": "...                                                                      [100%]\n3 passed in 0.01s\n",
+          "timed_out": false,
+          "tool": "run_test",
+          "tool_call_id": "understand-test-final",
+          "truncated": false,
+          "workspace_hash": "3f9ecb2138e44178e22946bb338b3ada1a4d43a5a4ad30e4ce2812d9631e5952"
+        },
+        {
+          "tool": "final_answer",
+          "tool_call_id": "understand-final",
+          "workspace_hash": "3f9ecb2138e44178e22946bb338b3ada1a4d43a5a4ad30e4ce2812d9631e5952"
+        }
+      ],
+      "audit_records": 71,
+      "audit_valid": true,
+      "approved_write_ids": [
+        "understand-write-report"
+      ],
+      "files": {
+        "report": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/code_understanding/workspace/artifacts/analysis.md",
+        "audit": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/code_understanding/run/audit.jsonl",
+        "checkpoint": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/code_understanding/run/checkpoint.json",
+        "patch": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/code_understanding/run/changes.patch"
+      }
+    },
+    "test_fix": {
+      "passed": true,
+      "workspace": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/test_fix/workspace",
+      "run_dir": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/test_fix/run",
+      "run_id": "9b3b6a3d26e043c4975f4381af273cc9",
+      "checks": {
+        "completed": true,
+        "audit_valid": true,
+        "exactly_once_writes": true,
+        "scoped_fixture_approvals": true,
+        "test_oracle_unchanged": true,
+        "expected_source_diff": true,
+        "current_tests_pass": true,
+        "exact_fixture_contents": true
+      },
+      "state": {
+        "status": "COMPLETED",
+        "step": 8,
+        "calls": 8,
+        "completed_call_ids": [
+          "fix-final",
+          "fix-plan",
+          "fix-read-source",
+          "fix-read-tests",
+          "fix-test-before",
+          "fix-test-final",
+          "fix-write-report",
+          "fix-write-source"
+        ],
+        "completed_write_ids": [
+          "fix-write-report",
+          "fix-write-source"
+        ],
+        "completed_write_count": 2,
+        "workspace_hash": "bc2eefd60de47b79bc919707b497f189a0f1281fbe4fe615e3edf408e2f1939e"
+      },
+      "diff": {
+        "before": {
+          "calculator.py": "76f82a697e213ae1a12911b141caca12a359a880d0d7c9b727778b6ac89278f6",
+          "test_calculator.py": "6458399766ffc27212ed1dad6550c75b8a7c528c36b546a9df2cfb3e58165c88"
+        },
+        "after": {
+          "calculator.py": "969eaf5ad022be11a738064ce1c936154306ee08dcc84841b52cd49f0285494a",
+          "test_calculator.py": "6458399766ffc27212ed1dad6550c75b8a7c528c36b546a9df2cfb3e58165c88"
+        },
+        "changed_files": [
+          "calculator.py"
+        ]
+      },
+      "evidence": [
+        {
+          "tool": "plan_task",
+          "tool_call_id": "fix-plan",
+          "workspace_hash": "dddcc4be30b557f127edd6fa98d07ecad26ff73cc882049a1a5dd3164689a738"
+        },
+        {
+          "path": "calculator.py",
+          "tool": "read_file",
+          "tool_call_id": "fix-read-source",
+          "workspace_hash": "dddcc4be30b557f127edd6fa98d07ecad26ff73cc882049a1a5dd3164689a738"
+        },
+        {
+          "path": "test_calculator.py",
+          "tool": "read_file",
+          "tool_call_id": "fix-read-tests",
+          "workspace_hash": "dddcc4be30b557f127edd6fa98d07ecad26ff73cc882049a1a5dd3164689a738"
+        },
+        {
+          "path": "calculator.py",
+          "sha256": "969eaf5ad022be11a738064ce1c936154306ee08dcc84841b52cd49f0285494a",
+          "tool": "write_file",
+          "tool_call_id": "fix-write-source",
+          "workspace_hash": "6b919d3702d90bc0128b064431da572957ca6c3fe59880ab2ceea011bbd4af9f"
+        },
+        {
+          "path": "artifacts/repair.md",
+          "sha256": "a59477bf542773092f790e8f8a1e879c4bc790bdf64be32d63022ff5c4707f93",
+          "tool": "write_file",
+          "tool_call_id": "fix-write-report",
+          "workspace_hash": "bc2eefd60de47b79bc919707b497f189a0f1281fbe4fe615e3edf408e2f1939e"
+        },
+        {
+          "argv": [
+            "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/.venv/bin/python",
+            "-I",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "-c",
+            "/dev/null",
+            "--rootdir",
+            ".",
+            "-o",
+            "pythonpath=."
+          ],
+          "cancelled": false,
+          "command": "unit",
+          "exit_code": 0,
+          "output": "...                                                                      [100%]\n3 passed in 0.01s\n",
+          "timed_out": false,
+          "tool": "run_test",
+          "tool_call_id": "fix-test-final",
+          "truncated": false,
+          "workspace_hash": "bc2eefd60de47b79bc919707b497f189a0f1281fbe4fe615e3edf408e2f1939e"
+        },
+        {
+          "tool": "final_answer",
+          "tool_call_id": "fix-final",
+          "workspace_hash": "bc2eefd60de47b79bc919707b497f189a0f1281fbe4fe615e3edf408e2f1939e"
+        }
+      ],
+      "audit_records": 100,
+      "audit_valid": true,
+      "approved_write_ids": [
+        "fix-write-source",
+        "fix-write-report"
+      ],
+      "files": {
+        "report": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/test_fix/workspace/artifacts/repair.md",
+        "audit": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/test_fix/run/audit.jsonl",
+        "checkpoint": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/test_fix/run/checkpoint.json",
+        "patch": "/Users/bytedance/code/go/src/github.com/homework-G20200607010067/week3/output/acceptance/20261017T054103830010Z-804bf0f3/test_fix/run/changes.patch"
+      }
+    }
+  }
+}

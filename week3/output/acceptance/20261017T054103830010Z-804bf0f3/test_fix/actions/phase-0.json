@@ -1,0 +1,42 @@
+[
+  {
+    "id": "fix-plan",
+    "name": "plan_task",
+    "arguments": {
+      "steps": [
+        "Read source and tests",
+        "Inspect behavior and prepare the required report",
+        "Run the configured tests on the final workspace"
+      ]
+    }
+  },
+  {
+    "id": "fix-read-source",
+    "name": "read_file",
+    "arguments": {
+      "path": "calculator.py"
+    }
+  },
+  {
+    "id": "fix-read-tests",
+    "name": "read_file",
+    "arguments": {
+      "path": "test_calculator.py"
+    }
+  },
+  {
+    "id": "fix-test-before",
+    "name": "run_test",
+    "arguments": {
+      "command": "unit"
+    }
+  },
+  {
+    "id": "fix-write-source",
+    "name": "write_file",
+    "arguments": {
+      "path": "calculator.py",
+      "content": "\"\"\"Repaired arithmetic exercise fixture.\"\"\"\n\n\ndef add(left: int, right: int) -> int:\n    return left + right\n"
+    }
+  }
+]

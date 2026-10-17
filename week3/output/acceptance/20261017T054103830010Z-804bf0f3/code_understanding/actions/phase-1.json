@@ -1,0 +1,16 @@
+[
+  {
+    "id": "understand-test-final",
+    "name": "run_test",
+    "arguments": {
+      "command": "unit"
+    }
+  },
+  {
+    "id": "understand-final",
+    "name": "final_answer",
+    "arguments": {
+      "answer": "Completed the required approved report and current-version tests; see the durable evidence and diff."
+    }
+  }
+]

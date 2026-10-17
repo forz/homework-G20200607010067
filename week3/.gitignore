@@ -1,0 +1,21 @@
+.venv/
+.python/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.egg-info/
+tmp/
+.env
+.env.*
+.DS_Store
+*.pyo
+build/
+dist/
+.run.lock
+.checkpoint.json.lock
+
+# Keep one complete acceptance record; ignore later demos and repeated runs.
+/output/*
+!/output/acceptance/
+/output/acceptance/*
+!/output/acceptance/20261017T054103830010Z-804bf0f3/

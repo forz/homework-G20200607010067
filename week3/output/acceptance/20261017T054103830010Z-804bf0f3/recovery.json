@@ -1,0 +1,132 @@
+[
+  {
+    "case": "code_understanding",
+    "approved_call_id": "understand-write-report",
+    "before": {
+      "status": "WAITING_APPROVAL",
+      "step": 4,
+      "calls": 4,
+      "completed_call_ids": [
+        "understand-plan",
+        "understand-read-source",
+        "understand-read-tests"
+      ],
+      "completed_write_ids": [],
+      "completed_write_count": 0,
+      "workspace_hash": "8b6e7ac8686b499a26da36c5e6ef02e300e6e3a0b9dfdee9ef074a81cdca8295"
+    },
+    "after_approval": {
+      "step": 4,
+      "calls": 4
+    },
+    "after_resume": {
+      "status": "COMPLETED",
+      "step": 6,
+      "calls": 6,
+      "completed_call_ids": [
+        "understand-final",
+        "understand-plan",
+        "understand-read-source",
+        "understand-read-tests",
+        "understand-test-final",
+        "understand-write-report"
+      ],
+      "completed_write_ids": [
+        "understand-write-report"
+      ],
+      "completed_write_count": 1,
+      "workspace_hash": "3f9ecb2138e44178e22946bb338b3ada1a4d43a5a4ad30e4ce2812d9631e5952"
+    },
+    "completed_calls_preserved": true,
+    "write_executed_once": true
+  },
+  {
+    "case": "test_fix",
+    "approved_call_id": "fix-write-source",
+    "before": {
+      "status": "WAITING_APPROVAL",
+      "step": 5,
+      "calls": 5,
+      "completed_call_ids": [
+        "fix-plan",
+        "fix-read-source",
+        "fix-read-tests",
+        "fix-test-before"
+      ],
+      "completed_write_ids": [],
+      "completed_write_count": 0,
+      "workspace_hash": "dddcc4be30b557f127edd6fa98d07ecad26ff73cc882049a1a5dd3164689a738"
+    },
+    "after_approval": {
+      "step": 5,
+      "calls": 5
+    },
+    "after_resume": {
+      "status": "WAITING_APPROVAL",
+      "step": 6,
+      "calls": 6,
+      "completed_call_ids": [
+        "fix-plan",
+        "fix-read-source",
+        "fix-read-tests",
+        "fix-test-before",
+        "fix-write-source"
+      ],
+      "completed_write_ids": [
+        "fix-write-source"
+      ],
+      "completed_write_count": 1,
+      "workspace_hash": "6b919d3702d90bc0128b064431da572957ca6c3fe59880ab2ceea011bbd4af9f"
+    },
+    "completed_calls_preserved": true,
+    "write_executed_once": true
+  },
+  {
+    "case": "test_fix",
+    "approved_call_id": "fix-write-report",
+    "before": {
+      "status": "WAITING_APPROVAL",
+      "step": 6,
+      "calls": 6,
+      "completed_call_ids": [
+        "fix-plan",
+        "fix-read-source",
+        "fix-read-tests",
+        "fix-test-before",
+        "fix-write-source"
+      ],
+      "completed_write_ids": [
+        "fix-write-source"
+      ],
+      "completed_write_count": 1,
+      "workspace_hash": "6b919d3702d90bc0128b064431da572957ca6c3fe59880ab2ceea011bbd4af9f"
+    },
+    "after_approval": {
+      "step": 6,
+      "calls": 6
+    },
+    "after_resume": {
+      "status": "COMPLETED",
+      "step": 8,
+      "calls": 8,
+      "completed_call_ids": [
+        "fix-final",
+        "fix-plan",
+        "fix-read-source",
+        "fix-read-tests",
+        "fix-test-before",
+        "fix-test-final",
+        "fix-write-report",
+        "fix-write-source"
+      ],
+      "completed_write_ids": [
+        "fix-write-report",
+        "fix-write-source"
+      ],
+      "completed_write_count": 2,
+      "workspace_hash": "bc2eefd60de47b79bc919707b497f189a0f1281fbe4fe615e3edf408e2f1939e"
+    },
+    "completed_calls_preserved": true,
+    "write_executed_once": true
+  }
+]

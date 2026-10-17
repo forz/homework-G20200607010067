@@ -1,0 +1,10 @@
+--- a/calculator.py
++++ b/calculator.py
+@@ -1,5 +1,5 @@
+-"""Deliberately broken exercise fixture; the agent must repair add."""
++"""Repaired arithmetic exercise fixture."""
+ 
+ 
+ def add(left: int, right: int) -> int:
+-    return left - right
++    return left + right

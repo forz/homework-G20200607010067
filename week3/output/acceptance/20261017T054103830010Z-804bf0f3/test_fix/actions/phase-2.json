@@ -1,0 +1,16 @@
+[
+  {
+    "id": "fix-test-final",
+    "name": "run_test",
+    "arguments": {
+      "command": "unit"
+    }
+  },
+  {
+    "id": "fix-final",
+    "name": "final_answer",
+    "arguments": {
+      "answer": "Completed the required approved report and current-version tests; see the durable evidence and diff."
+    }
+  }
+]

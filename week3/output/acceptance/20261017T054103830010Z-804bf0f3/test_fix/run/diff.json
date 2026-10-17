@@ -1,0 +1,13 @@
+{
+  "before": {
+    "calculator.py": "76f82a697e213ae1a12911b141caca12a359a880d0d7c9b727778b6ac89278f6",
+    "test_calculator.py": "6458399766ffc27212ed1dad6550c75b8a7c528c36b546a9df2cfb3e58165c88"
+  },
+  "after": {
+    "calculator.py": "969eaf5ad022be11a738064ce1c936154306ee08dcc84841b52cd49f0285494a",
+    "test_calculator.py": "6458399766ffc27212ed1dad6550c75b8a7c528c36b546a9df2cfb3e58165c88"
+  },
+  "changed_files": [
+    "calculator.py"
+  ]
+}

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "week3-guarded-harness"
+version = "0.1.0"
+description = "Recoverable guarded coding harness around smolagents.ToolCallingAgent"
+requires-python = ">=3.12"
+dependencies = ["smolagents[openai]==1.26.0"]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1"]
+
+[project.scripts]
+guarded-harness = "guarded_harness.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["guarded_harness*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

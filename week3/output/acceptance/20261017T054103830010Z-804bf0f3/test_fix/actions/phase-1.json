@@ -1,0 +1,10 @@
+[
+  {
+    "id": "fix-write-report",
+    "name": "write_file",
+    "arguments": {
+      "path": "artifacts/repair.md",
+      "content": "# Test repair\n\nThe initial add implementation subtracted the right operand, so positive and\nnegative addition cases failed while the zero case happened to pass. The repair\nchanges the implementation to left + right. Existing tests are preserved exactly;\nthey check positive, negative, and zero operands. The configured unit command is\nrerun after this report so its result is bound to the final workspace version.\n"
+    }
+  }
+]

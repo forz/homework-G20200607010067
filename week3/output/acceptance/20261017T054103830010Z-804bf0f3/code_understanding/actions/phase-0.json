@@ -1,0 +1,35 @@
+[
+  {
+    "id": "understand-plan",
+    "name": "plan_task",
+    "arguments": {
+      "steps": [
+        "Read source and tests",
+        "Inspect behavior and prepare the required report",
+        "Run the configured tests on the final workspace"
+      ]
+    }
+  },
+  {
+    "id": "understand-read-source",
+    "name": "read_file",
+    "arguments": {
+      "path": "calculator.py"
+    }
+  },
+  {
+    "id": "understand-read-tests",
+    "name": "read_file",
+    "arguments": {
+      "path": "test_calculator.py"
+    }
+  },
+  {
+    "id": "understand-write-report",
+    "name": "write_file",
+    "arguments": {
+      "path": "artifacts/analysis.md",
+      "content": "# Code understanding\n\ncalculator.add returns the sum of its two integer arguments. calculator.divide\nreturns floating-point division and raises ValueError when the denominator is\nzero. The tests exercise positive and cancelling addition, fractional division,\nand the zero-denominator error. Source and tests remain unchanged. The configured\nunit command is run after this approved report to establish current-version evidence.\n"
+    }
+  }
+]
